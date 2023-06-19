@@ -50,3 +50,7 @@ span.icon {
   display: block;
   color: gray;
 }
+
+.github-link {
+  text-decoration: none;
+}
