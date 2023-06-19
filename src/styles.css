@@ -1,0 +1,47 @@
+.container {
+  max-width: 780px !important;
+}
+
+.date-col {
+  text-align: right;
+}
+
+.current-temp h1 {
+  font-size: 100px;
+  display: flex;
+}
+
+.icon {
+  font-size: 70px;
+}
+
+span.icon {
+  margin: 10px 20px;
+}
+
+.current-temp-far h1 {
+  font-size: 60px;
+  display: flex;
+}
+.icon-daily {
+  font-size: 60px;
+  display: block;
+}
+
+.unit {
+  font-size: 50px;
+  text-decoration: none;
+}
+
+.unit a {
+  text-decoration: none;
+  /* color: black; */
+}
+
+.unit a:hover {
+  color: gray;
+}
+
+.fs-7 {
+  font-size: 11px;
+}
