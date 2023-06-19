@@ -2,6 +2,10 @@
   max-width: 780px !important;
 }
 
+.fs-7 {
+  font-size: 11px;
+}
+
 .date-col {
   text-align: right;
 }
@@ -42,6 +46,7 @@ span.icon {
   color: gray;
 }
 
-.fs-7 {
-  font-size: 11px;
+.weather-details {
+  display: block;
+  color: gray;
 }
