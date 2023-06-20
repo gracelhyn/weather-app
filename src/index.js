@@ -58,8 +58,9 @@ function submitForm(event) {
     temp.innerHTML = Math.round(response.data.main.temp);
 
     let desc = document.querySelector("#weather-description");
-    let weatherDesc = response.data.weather[0].description[0];
-    let capitalizeDesc = weatherDesc.toUpperCase() + weatherDesc.slice(1); //capitalized first letter
+    let weatherDesc = response.data.weather[0].description;
+    let capitalizeDesc = weatherDesc[0].toUpperCase() + weatherDesc.slice(1); //capitalized first letter
+    console.log(capitalizeDesc);
     desc.innerHTML = capitalizeDesc;
 
     let humidity = document.querySelector("#humidity");
