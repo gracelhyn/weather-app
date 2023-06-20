@@ -15,6 +15,7 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 
     <title>Weather APP UI</title>
   </head>
@@ -46,7 +47,7 @@
       <div class="row">
         <div class="col-7">
           <h1 id="display-city">Lambunao, Iloilo</h1>
-          <h3>Sunny</h3>
+          <h3 id="weather-description">Sunny</h3>
         </div>
         <div class="col-5 date-col pt-2">
           <h4 id="current-date-time">Monday, 3:15 PM</h4>
@@ -65,9 +66,9 @@
           </h1>
         </div>
         <div class="col-4 mt-2">
-          <span class="weather-details">Precipitation: 80% </span>
-          <span class="weather-details">Humidity: 79% </span>
-          <span class="weather-details">Wind: 11 km/h </span>
+          <!-- <span class="weather-details">Precipitation: 80% </span> -->
+          <span class="weather-details" id="humidity">Humidity: 79% </span>
+          <span class="weather-details" id="wind">Wind: 11 km/h </span>
         </div>
       </div>
     </div>

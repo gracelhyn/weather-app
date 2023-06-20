@@ -49,6 +49,27 @@ function submitForm(event) {
   let city = document.querySelector("#input-city");
   let displayCity = document.querySelector("#display-city");
   displayCity.innerHTML = city.value;
+
+  let apiKey = "c8a77112b2faf6684bb4b21a0aa778ae";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&units=metric&appid=${apiKey}`;
+  function showWeather(response) {
+    console.log(response);
+    console.log(response.data.main.humidity);
+    // console.log(response.data.weather[0].description);
+    let temp = document.querySelector("#temp-value");
+    temp.innerHTML = Math.round(response.data.main.temp);
+    let desc = document.querySelector("#weather-description");
+    desc.innerHTML = response.data.weather[0].description;
+    let humidity = document.querySelector("#humidity");
+    humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+    let wind = document.querySelector("#wind");
+    wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
+
+    // let temp = Math.round(response.data.main.temp);
+    // let displayTemp = document.querySelector("h1");
+    // displayTemp.innerHTML = `It is ${temp} degrees in Sydney`;
+  }
+  axios.get(apiUrl).then(showWeather);
 }
 let cityForm = document.querySelector("#search-city-form");
 
