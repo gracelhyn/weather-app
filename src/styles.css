@@ -1,56 +1,58 @@
+body {
+  font-family: Google Sans, arial, sans-serif;
+  color: #70757a;
+}
+
 .container {
-  max-width: 780px !important;
+  max-width: 800px;
 }
 
-.fs-7 {
-  font-size: 11px;
+.wrapper {
+  border: 1px solid;
+  /* border-color: #70757a; */
+  border-color: rgba(112, 117, 122, 0.3);
+  border-radius: 5px;
+  box-shadow: 2px 1px 10px;
+  margin-bottom: 20px;
+}
+.current-weather {
+  /* margin-bottom: 20px; */
+}
+.current-weather h1 {
+  margin: 0;
+  font-weight: bolder;
 }
 
-.date-col {
-  text-align: right;
+.weather-icon {
+  display: inline-block;
+  margin-top: unset;
+  height: 80px;
+  vertical-align: top;
+  width: 80px;
 }
 
-.current-temp h1 {
-  font-size: 100px;
-  display: flex;
-}
-
-.icon {
-  font-size: 70px;
-}
-
-span.icon {
-  margin: 10px 20px;
-}
-
-.current-temp-far h1 {
+.temperature {
+  color: #202124;
   font-size: 60px;
-  display: flex;
-}
-.icon-daily {
-  font-size: 60px;
-  display: block;
+  margin: 0;
+  font-weight: 500;
 }
 
-.unit {
-  font-size: 50px;
+.temp-unit {
+  color: #202124;
+  display: inline-block;
+  font-size: 25px;
+  line-height: 24px;
+  margin-top: 20px;
+  padding-left: 6px;
+  vertical-align: top;
+}
+
+.temp-unit a {
   text-decoration: none;
-}
-
-.unit a {
-  text-decoration: none;
-  /* color: black; */
-}
-
-.unit a:hover {
-  color: gray;
 }
 
 .weather-details {
-  display: block;
-  color: gray;
-}
-
-.github-link {
-  text-decoration: none;
+  margin-top: 20px;
+  list-style: none;
 }
