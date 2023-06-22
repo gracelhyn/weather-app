@@ -1,12 +1,10 @@
-function getWeatherUpdate(e) {
-  e.preventDefault();
-  let city = document.querySelector("#input-city");
-
+function searchCity(city) {
   let apiKey = "1caa6b89633408117o3ebccdt1fcc4b9";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city.value}&key=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+
   function showWeather(response) {
     let displayCity = document.querySelector("#city");
-    displayCity.innerHTML = `${city.value}, ${response.data.country}`;
+    displayCity.innerHTML = `${city}, ${response.data.country}`;
 
     let currentTemp = response.data.temperature.current;
     let tempNow = document.querySelector("#temperature");
@@ -20,8 +18,16 @@ function getWeatherUpdate(e) {
     humidity.innerHTML = `Humidity: ${response.data.temperature.humidity}%`;
     wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
     icon.setAttribute("src", response.data.condition.icon_url);
+    icon.setAttribute("alt", response.data.condition.description);
   }
   axios.get(apiUrl).then(showWeather);
+}
+
+searchCity("Manila");
+function getWeatherUpdate(e) {
+  e.preventDefault();
+  let city = document.querySelector("#input-city");
+  searchCity(city.value);
 }
 let cityForm = document.querySelector("#search-city-form");
 cityForm.addEventListener("submit", getWeatherUpdate);
