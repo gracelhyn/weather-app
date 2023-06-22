@@ -9,19 +9,17 @@ function getWeatherUpdate(e) {
     displayCity.innerHTML = `${city.value}, ${response.data.country}`;
 
     let currentTemp = response.data.temperature.current;
-    console.log(response);
     let tempNow = document.querySelector("#temperature");
-    tempNow.innerHTML = Math.round(currentTemp);
-
     let tempDescription = document.querySelector("#description");
-    tempDescription.innerHTML = response.data.condition.description;
-    // console.log(response.data.main.temp);
-
     let humidity = document.querySelector("#humidity");
-    humidity.innerHTML = `Humidity: ${response.data.temperature.humidity}%`;
-
     let wind = document.querySelector("#wind");
+    let icon = document.querySelector("#weather-icon");
+
+    tempNow.innerHTML = Math.round(currentTemp);
+    tempDescription.innerHTML = response.data.condition.description;
+    humidity.innerHTML = `Humidity: ${response.data.temperature.humidity}%`;
     wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
+    icon.setAttribute("src", response.data.condition.icon_url);
   }
   axios.get(apiUrl).then(showWeather);
 }
@@ -65,13 +63,12 @@ function displayToday(today) {
   }
 
   let dayTime = document.querySelector("#displayDayTime");
-  dayTime.innerHTML = `${day}, ${hour}:${minute} PM`;
-
   let displayDate = document.querySelector("#displayDate");
   let dayToday = today.getDate();
   let monthNow = months[today.getMonth()];
   let yearNow = today.getFullYear();
 
+  dayTime.innerHTML = `${day}, ${hour}:${minute} PM`;
   displayDate.innerHTML = `${dayToday} ${monthNow} ${yearNow}`;
 }
 
