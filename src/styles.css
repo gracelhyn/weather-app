@@ -51,6 +51,16 @@ body {
 
 .temp-unit a {
   text-decoration: none;
+  /* color: #202124; */
+}
+
+.temp-unit .active {
+  text-decoration: none;
+  color: #202124;
+}
+
+.temp-unit a:hover {
+  cursor: default;
 }
 
 .weather-details {

@@ -6,14 +6,15 @@ function searchCity(city) {
     let displayCity = document.querySelector("#city");
     displayCity.innerHTML = `${city}, ${response.data.country}`;
 
-    let currentTemp = response.data.temperature.current;
+    celciusValue = response.data.temperature.current;
+    // let currentTemp = response.data.temperature.current;
     let tempNow = document.querySelector("#temperature");
     let tempDescription = document.querySelector("#description");
     let humidity = document.querySelector("#humidity");
     let wind = document.querySelector("#wind");
     let icon = document.querySelector("#weather-icon");
 
-    tempNow.innerHTML = Math.round(currentTemp);
+    tempNow.innerHTML = Math.round(celciusValue);
     tempDescription.innerHTML = response.data.condition.description;
     humidity.innerHTML = `Humidity: ${response.data.temperature.humidity}%`;
     wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
@@ -22,6 +23,31 @@ function searchCity(city) {
   }
   axios.get(apiUrl).then(showWeather);
 }
+
+function getFahrenheit(e) {
+  e.preventDefault();
+  let fahrenheitValue = (celciusValue * 9) / 5 + 32;
+  let tempNow = document.querySelector("#temperature");
+  fahrenheit.classList.add("active");
+  celcius.classList.remove("active");
+  tempNow.innerHTML = Math.round(fahrenheitValue);
+}
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", getFahrenheit);
+
+function getCelcius(e) {
+  e.preventDefault();
+  let tempNow = document.querySelector("#temperature");
+  celcius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  tempNow.innerHTML = Math.round(celciusValue);
+}
+
+let celcius = document.querySelector("#celcius");
+celcius.addEventListener("click", getCelcius);
+
+let celciusValue = null;
 
 searchCity("Manila");
 function getWeatherUpdate(e) {
