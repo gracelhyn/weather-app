@@ -16,6 +16,12 @@ function getWeatherUpdate(e) {
     let tempDescription = document.querySelector("#description");
     tempDescription.innerHTML = response.data.condition.description;
     // console.log(response.data.main.temp);
+
+    let humidity = document.querySelector("#humidity");
+    humidity.innerHTML = `Humidity: ${response.data.temperature.humidity}%`;
+
+    let wind = document.querySelector("#wind");
+    wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
   }
   axios.get(apiUrl).then(showWeather);
 }
