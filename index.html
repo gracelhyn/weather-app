@@ -10,6 +10,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 
     <title>SheCode Weather App</title>
   </head>
@@ -51,7 +52,7 @@
         <div class="row">
           <div class="col-8">
             <img src="assets/img/cloudy.png" alt="" class="weather-icon" />
-            <span class="temperature">31</span>
+            <span class="temperature" id="temperature">31</span>
             <span class="temp-unit">°C | <a href="#">°F</a></span>
           </div>
           <div class="col-4">

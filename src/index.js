@@ -1,11 +1,22 @@
-function getCity(e) {
+function getWeatherUpdate(e) {
   e.preventDefault();
   let city = document.querySelector("#input-city");
   let displayCity = document.querySelector("#city");
   displayCity.innerHTML = city.value;
+
+  let apiKey = "1caa6b89633408117o3ebccdt1fcc4b9";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city.value}&key=${apiKey}`;
+  function showWeather(response) {
+    let currentTemp = response.data.temperature.current;
+    console.log(currentTemp);
+    let tempNow = document.querySelector("#temperature");
+    tempNow.innerHTML = Math.round(currentTemp);
+    // console.log(response.data.main.temp);
+  }
+  axios.get(apiUrl).then(showWeather);
 }
 let cityForm = document.querySelector("#search-city-form");
-cityForm.addEventListener("submit", getCity);
+cityForm.addEventListener("submit", getWeatherUpdate);
 
 function displayToday(today) {
   let days = [
