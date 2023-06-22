@@ -1,16 +1,20 @@
 function getWeatherUpdate(e) {
   e.preventDefault();
   let city = document.querySelector("#input-city");
-  let displayCity = document.querySelector("#city");
-  displayCity.innerHTML = city.value;
 
   let apiKey = "1caa6b89633408117o3ebccdt1fcc4b9";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city.value}&key=${apiKey}`;
   function showWeather(response) {
+    let displayCity = document.querySelector("#city");
+    displayCity.innerHTML = `${city.value}, ${response.data.country}`;
+
     let currentTemp = response.data.temperature.current;
-    console.log(currentTemp);
+    console.log(response);
     let tempNow = document.querySelector("#temperature");
     tempNow.innerHTML = Math.round(currentTemp);
+
+    let tempDescription = document.querySelector("#description");
+    tempDescription.innerHTML = response.data.condition.description;
     // console.log(response.data.main.temp);
   }
   axios.get(apiUrl).then(showWeather);
