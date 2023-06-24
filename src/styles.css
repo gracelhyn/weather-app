@@ -15,8 +15,9 @@ body {
   box-shadow: 2px 1px 10px;
   margin-bottom: 20px;
 }
-.current-weather {
-  /* margin-bottom: 20px; */
+.description::first-letter,
+.city::first-letter {
+  text-transform: capitalize;
 }
 .current-weather h1 {
   margin: 0;

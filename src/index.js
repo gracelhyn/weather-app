@@ -20,6 +20,61 @@ function searchCity(city) {
     wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
     icon.setAttribute("src", response.data.condition.icon_url);
     icon.setAttribute("alt", response.data.condition.description);
+
+    function formatDayTime(timeStamp) {
+      let date = new Date(timeStamp);
+      let days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+
+      let day = days[date.getDay()];
+      let hour = date.getHours();
+      if (hour < 10) {
+        hour = `0${hour}`;
+      }
+      let minute = date.getMinutes();
+      if (minute < 10) {
+        minute = `0${minute}`;
+      }
+      return `${day}, ${hour}:${minute}`;
+    }
+
+    function formatDate(timeStamp) {
+      let date = new Date(timeStamp);
+      let months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      let dayToday = date.getDate();
+      let monthNow = months[date.getMonth()];
+      let yearNow = date.getFullYear();
+      return `${dayToday} ${monthNow} ${yearNow}`;
+    }
+    function displayToday(today) {
+      let dayTime = document.querySelector("#displayDayTime");
+      let displayDate = document.querySelector("#displayDate");
+
+      dayTime.innerHTML = formatDayTime(response.data.time * 1000);
+      displayDate.innerHTML = formatDate(response.data.time * 1000);
+    }
+
+    displayToday(new Date());
   }
   axios.get(apiUrl).then(showWeather);
 }
@@ -57,51 +112,3 @@ function getWeatherUpdate(e) {
 }
 let cityForm = document.querySelector("#search-city-form");
 cityForm.addEventListener("submit", getWeatherUpdate);
-
-function displayToday(today) {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  let day = days[today.getDay()];
-  let hour = today.getHours();
-  if (hour < 10) {
-    hour = `0${hour}`;
-  }
-  let minute = today.getMinutes();
-  if (minute < 10) {
-    minute = `0${minute}`;
-  }
-
-  let dayTime = document.querySelector("#displayDayTime");
-  let displayDate = document.querySelector("#displayDate");
-  let dayToday = today.getDate();
-  let monthNow = months[today.getMonth()];
-  let yearNow = today.getFullYear();
-
-  dayTime.innerHTML = `${day}, ${hour}:${minute} PM`;
-  displayDate.innerHTML = `${dayToday} ${monthNow} ${yearNow}`;
-}
-
-displayToday(new Date());
