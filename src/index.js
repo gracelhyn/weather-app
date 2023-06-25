@@ -79,6 +79,24 @@ function searchCity(city) {
   axios.get(apiUrl).then(showWeather);
 }
 
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+  forecast.innerHTML = `<div class="row">
+            <div class="col">
+              <div class="weather-forecast-day">Mon</div>
+              <img
+                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png"
+                alt=""
+                width="60"
+              />
+              <div class="weather-forecast-temp">
+                <span class="fs-6">27 °C</span>
+                <span class="fs-7">60 °F</span>
+              </div>
+            </div>
+          </div>`;
+}
+
 function getFahrenheit(e) {
   e.preventDefault();
   let fahrenheitValue = (celciusValue * 9) / 5 + 32;
@@ -112,3 +130,5 @@ function getWeatherUpdate(e) {
 }
 let cityForm = document.querySelector("#search-city-form");
 cityForm.addEventListener("submit", getWeatherUpdate);
+
+displayForecast();
