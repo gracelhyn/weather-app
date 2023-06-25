@@ -2,7 +2,9 @@ body {
   font-family: Google Sans, arial, sans-serif;
   color: #70757a;
 }
-
+.fs-7 {
+  font-size: 0.8rem !important;
+}
 .container {
   max-width: 800px;
 }
@@ -67,4 +69,13 @@ body {
 .weather-details {
   margin-top: 20px;
   list-style: none;
+}
+
+.weather-forecast {
+  color: black;
+  text-align: center;
+}
+
+.weather-forecast-day {
+  font-size: 20px;
 }
