@@ -81,9 +81,14 @@ function searchCity(city) {
 
 function displayForecast() {
   let forecast = document.querySelector("#forecast");
-  forecast.innerHTML = `<div class="row">
-            <div class="col">
-              <div class="weather-forecast-day">Mon</div>
+  let forecastHTML = `<div class="row">`;
+  let days = ["Mon", "Tue", "Wed"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+            <div class="col-2">
+              <div class="weather-forecast-day">${day}</div>
               <img
                 src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png"
                 alt=""
@@ -94,7 +99,11 @@ function displayForecast() {
                 <span class="fs-7">60 °F</span>
               </div>
             </div>
-          </div>`;
+          `;
+  });
+
+  forecastHTML += `</div>`;
+  forecast.innerHTML = forecastHTML;
 }
 
 function getFahrenheit(e) {
