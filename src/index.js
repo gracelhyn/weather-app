@@ -15,6 +15,45 @@ function searchCity(city) {
     let humidity = document.querySelector("#humidity");
     let wind = document.querySelector("#wind");
     let icon = document.querySelector("#weather-icon");
+    let bodyImg = document.querySelector("#body");
+    let iconType = response.data.condition.icon;
+    if (iconType == "clear-sky-day") {
+      bodyImg.style.backgroundImage = `url(assets/img/clear-sky-day.jpg)`;
+    } else if (iconType == "clear-sky-night") {
+      bodyImg.style.backgroundImage = `url(assets/img/clear-sky-night.jpg)`;
+    } else if (iconType == "few-clouds-day") {
+      bodyImg.style.backgroundImage = `url(assets/img/few-clouds-day.jpg)`;
+    } else if (iconType == "few-clouds-night") {
+      bodyImg.style.backgroundImage = `url(assets/img/few-clouds-night.jpg)`;
+    } else if (iconType == "scattered-clouds-day") {
+      bodyImg.style.backgroundImage = `url(assets/img/scattered-clouds-day.jpg)`;
+    } else if (iconType == "scattered-clouds-night") {
+      bodyImg.style.backgroundImage = `url(assets/img/scattered-clouds-night.jpg)`;
+    } else if (iconType == "broken-clouds-day") {
+      bodyImg.style.backgroundImage = `url(assets/img/broken-clouds-day.jpg)`;
+    } else if (iconType == "broken-clouds-night") {
+      bodyImg.style.backgroundImage = `url(assets/img/broken-clouds-night.jpg)`;
+    } else if (iconType == "shower-rain-day") {
+      bodyImg.style.backgroundImage = `url(assets/img/shower-rain-day.jpg)`;
+    } else if (iconType == "shower-rain-night") {
+      bodyImg.style.backgroundImage = `url(assets/img/shower-rain-night.jpg)`;
+    } else if (iconType == "rain-day") {
+      bodyImg.style.backgroundImage = `url(assets/img/rain-day.jpg)`;
+    } else if (iconType == "rain-night") {
+      bodyImg.style.backgroundImage = `url(assets/img/rain-night.jpg)`;
+    } else if (iconType == "thunderstorm-day") {
+      bodyImg.style.backgroundImage = `url(assets/img/thunderstorm-day.jpg)`;
+    } else if (iconType == "thunderstorm-night") {
+      bodyImg.style.backgroundImage = `url(assets/img/thunderstorm-night.jpg)`;
+    } else if (iconType == "snow-day") {
+      bodyImg.style.backgroundImage = `url(assets/img/snow-day.jpg)`;
+    } else if (iconType == "snow-night") {
+      bodyImg.style.backgroundImage = `url(assets/img/snow-night.jpg)`;
+    } else if (iconType == "mist-day") {
+      bodyImg.style.backgroundImage = `url(assets/img/mist-day.jpg)`;
+    } else if (iconType == "mist-night") {
+      bodyImg.style.backgroundImage = `url(assets/img/mist-night.jpg)`;
+    }
 
     tempNow.innerHTML = Math.round(celciusValue);
     tempDescription.innerHTML = response.data.condition.description;
@@ -22,7 +61,6 @@ function searchCity(city) {
     wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
     icon.setAttribute("src", response.data.condition.icon_url);
     icon.setAttribute("alt", response.data.condition.description);
-
     function formatDayTime(timeStamp) {
       let date = new Date(timeStamp);
       let days = [

@@ -1,6 +1,10 @@
 body {
   font-family: Google Sans, arial, sans-serif;
   color: #70757a;
+  background-image: url("../assets/img/scattered-clouds-day.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-size: 100%; */
 }
 .fs-7 {
   font-size: 0.8rem !important;
@@ -16,6 +20,7 @@ body {
   border-radius: 5px;
   box-shadow: 2px 1px 10px;
   margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 .description::first-letter,
 .city::first-letter {
