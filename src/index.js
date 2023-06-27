@@ -93,7 +93,6 @@ function getForecast(city) {
   let apiKey = "1caa6b89633408117o3ebccdt1fcc4b9";
   let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   function displayForecast(response) {
-    console.log(response.data.daily);
     let forecast = response.data.daily;
     let forecastElement = document.querySelector("#forecast");
     let forecastHTML = `<div class="row">`;
