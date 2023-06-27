@@ -1,4 +1,6 @@
 function searchCity(city) {
+  getForecast(city);
+
   let apiKey = "1caa6b89633408117o3ebccdt1fcc4b9";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 
@@ -79,31 +81,54 @@ function searchCity(city) {
   axios.get(apiUrl).then(showWeather);
 }
 
-function displayForecast() {
-  let forecast = document.querySelector("#forecast");
-  let forecastHTML = `<div class="row">`;
-  let days = ["Mon", "Tue", "Wed"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+function formatDay(timeStamp) {
+  let date = new Date(timeStamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function getForecast(city) {
+  let apiKey = "1caa6b89633408117o3ebccdt1fcc4b9";
+  let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  function displayForecast(response) {
+    console.log(response.data.daily);
+    let forecast = response.data.daily;
+    let forecastElement = document.querySelector("#forecast");
+    let forecastHTML = `<div class="row">`;
+    forecast.forEach(function (forecastDay, index) {
+      if (index < 6) {
+        forecastHTML =
+          forecastHTML +
+          `
             <div class="col-2">
-              <div class="weather-forecast-day">${day}</div>
+              <div class="weather-forecast-day">${formatDay(
+                forecastDay.time
+              )}</div>
               <img
-                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png"
+                src="${forecastDay.condition.icon_url}"
                 alt=""
                 width="60"
               />
               <div class="weather-forecast-temp">
-                <span class="fs-6">27 °C</span>
-                <span class="fs-7">60 °F</span>
+                <span class="fs-6">${Math.round(
+                  forecastDay.temperature.maximum
+                )} °C</span>
+                <span class="fs-7">${Math.round(
+                  (forecastDay.temperature.maximum * 9) / 5 + 32
+                )} °F</span>
               </div>
             </div>
           `;
-  });
+      }
+    });
 
-  forecastHTML += `</div>`;
-  forecast.innerHTML = forecastHTML;
+    forecastHTML += `</div>`;
+    forecastElement.innerHTML = forecastHTML;
+  }
+
+  axios.get(apiURL).then(displayForecast);
 }
 
 function getFahrenheit(e) {
@@ -139,5 +164,3 @@ function getWeatherUpdate(e) {
 }
 let cityForm = document.querySelector("#search-city-form");
 cityForm.addEventListener("submit", getWeatherUpdate);
-
-displayForecast();
